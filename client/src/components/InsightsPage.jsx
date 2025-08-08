@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, Users, Calendar, GitCommit, TrendingUp, Code, Database, Cloud, Zap, Shield, Globe } from 'lucide-react'
+import { ArrowLeft, Users, Calendar, GitCommit, TrendingUp, Code, Database, Cloud, Zap, Shield, Globe, Download, Printer } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { downloadPDF, printPDF } from '../utils/pdfGenerator'
 
 const InsightsPage = ({ insights }) => {
   if (!insights) {
@@ -82,6 +83,36 @@ const InsightsPage = ({ insights }) => {
             >
               {insights.summary}
             </motion.p>
+            
+            {/* Download Options */}
+            <motion.div 
+              className="download-options"
+              variants={fadeInUp}
+              style={{ 
+                display: 'flex', 
+                gap: '12px', 
+                justifyContent: 'center', 
+                marginTop: '24px',
+                flexWrap: 'wrap'
+              }}
+            >
+              <button 
+                className="btn btn-primary"
+                onClick={() => downloadPDF(insights)}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+              >
+                <Download size={16} />
+                Download Report
+              </button>
+              <button 
+                className="btn btn-secondary"
+                onClick={() => printPDF(insights)}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+              >
+                <Printer size={16} />
+                Print PDF
+              </button>
+            </motion.div>
           </motion.div>
 
           <div className="insights-layout">

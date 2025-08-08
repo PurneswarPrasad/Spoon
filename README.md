@@ -23,12 +23,13 @@ Whether you're a seasoned developer reviewing open-source libraries or a student
 
 * ✅ **GitHub Repo Cloning & Analysis** – Just paste a repo URL, and Spoon does the rest.
 * ✨ **AI-Powered Insights** – Uses Gemini to summarize repo structure and logic.
-* 📊 **Commit Count, Languages & Meta** – Fetches details via the GitHub API.
+* 📊 **Commit Count, Languages & other metadata** – Fetches details via the GitHub API.
 * 🧠 **Search History (User-based)** – Every logged-in user sees their past analyses.
 * 🌐 **OAuth Login** – Google login with PKCE ensures secure sign-in.
 * 💾 **SQLite-backed History** – Persistent user-specific search logs.
 * ⚡ **Blazing Fast Frontend** – Built with **React** and **TailwindCSS** for minimal cognitive load and clean design.
 * 🔒 **Secure Backend** – JWT session handling, API rate-limiting, and environment-based secrets.
+* 📜 **Downloadable reports** – Download your generated insights for future use cases as PDF or HTML.
 
 ---
 
@@ -41,7 +42,6 @@ Whether you're a seasoned developer reviewing open-source libraries or a student
 | Auth      | Google OAuth + JWT   |
 | Database  | SQLite               |
 | AI Engine | Gemini (via API key) |
-| Hosting   | Vercel               |
 
 ---
 
@@ -66,9 +66,8 @@ To run Spoon, you'll need to set up the following environment variables:
 ```
 spoon/
 ├── client/              # React Frontend (GitHub input, insights UI)
-├── server/              # Node.js Backend (API, GitHub cloning, DB)
-├── spoon.db             # SQLite file (auto-created)
-├── .env                 # Your environment config (not committed)
+├── server/              # Node.js Backend (API, GitHub cloning, DB, env)
+    ├── spoon.db             # SQLite file (auto-created)
 ├── README.md            # This file!
 ```
 
@@ -76,11 +75,8 @@ spoon/
 
 ### 🔮 What's Coming Next?
 
-* GitHub README.md and Markdown **PDF analysis**
-* **Export insights** as downloadable reports
 * Visual graphs of commit activity and contributors
-* Dark mode (because we love our eyes 👀)
-* Switchable **AI model support** (Gemini, GPT, Claude)
+* Switchable **AI model support** (GPT, Claude)
 
 ---
 
