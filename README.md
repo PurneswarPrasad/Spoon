@@ -1,8 +1,8 @@
 ## 🍴 Welcome to **Spoon**
 
-**Spoon** is your one-stop solution to understand any public GitHub repository — in a **clear**, **fun**, and **visual** way.
+**Spoon** is your one-stop solution to understand any public GitHub repository - in a **clear**, **fun**, and **visual** way.
 
-We believe that even someone who's never written a line of code should be able to **grasp what a repository does** — and that's the experience Spoon delivers.
+We believe that even someone who's never written a line of code should be able to **grasp what a repository does**, and that's the experience Spoon delivers.
 
 ---
 
@@ -15,7 +15,7 @@ Spoon is a developer tool and an educational assistant built with **simplicity f
 * Explore AI-summarized overviews of the codebase
 * Revisit past insights with a **personal search history**
 
-Whether you're a seasoned developer reviewing open-source libraries or a student exploring GitHub for the first time — Spoon simplifies the discovery process.
+Whether you're a seasoned developer reviewing open-source libraries or a student exploring GitHub for the first time, Spoon simplifies the discovery process.
 
 ---
 
