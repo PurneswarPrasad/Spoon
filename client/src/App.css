@@ -875,6 +875,68 @@
   background: rgba(148, 163, 184, 0.1);
 }
 
+/* Footer Styles */
+.footer {
+  background: rgba(15, 23, 42, 0.8);
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  padding: 24px 0;
+  margin-top: auto;
+  backdrop-filter: blur(10px);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.copyright {
+  color: #94a3b8;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.credit {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  color: #64748b;
+  font-style: italic;
+}
+
+.vibe {
+  color: #3b82f6;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.love {
+  color: #ef4444;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.purnez-link {
+  color: #8b5cf6;
+  text-decoration: none;
+  font-weight: 600;
+  font-style: normal;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.purnez-link:hover {
+  color: #a855f7;
+  text-decoration: underline;
+}
+
+.purnez-link::after {
+  content: '↗';
+  font-size: 10px;
+  margin-left: 2px;
+  opacity: 0.7;
+}
+
 /* Your Spoons Page Styles */
 .your-spoons-container {
   padding: 40px 0;

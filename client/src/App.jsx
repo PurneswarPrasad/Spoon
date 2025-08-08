@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import axios from 'axios'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
 import Header from './components/Header'
+import Footer from './components/Footer'
 import LoginPage from './components/LoginPage'
 import LandingPage from './components/LandingPage'
 import InsightsPage from './components/InsightsPage'
@@ -130,6 +131,7 @@ function AppContent() {
                 loading={loadingInsights}
                 error={error}
               />
+              <Footer />
             </ProtectedRoute>
           } 
         />
@@ -143,6 +145,7 @@ function AppContent() {
               ) : (
                 <Navigate to="/" replace />
               )}
+              <Footer />
             </ProtectedRoute>
           } 
         />
@@ -156,6 +159,7 @@ function AppContent() {
             <ProtectedRoute>
               <Header />
               <YourSpoonsPage />
+              <Footer />
             </ProtectedRoute>
           } 
         />
