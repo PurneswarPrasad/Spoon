@@ -74,7 +74,7 @@ const InsightsPage = ({ insights }) => {
               className="insights-title"
               variants={fadeInUp}
             >
-              {insights.name} Insights
+              About {insights.name}
             </motion.h1>
             <motion.p 
               className="insights-summary"

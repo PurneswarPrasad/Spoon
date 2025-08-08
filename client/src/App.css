@@ -989,19 +989,6 @@
   margin: 0;
 }
 
-.spoon-meta {
-  display: flex;
-  gap: 16px;
-}
-
-.spoon-meta-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #94a3b8;
-  font-size: 14px;
-}
-
 .spoon-technologies {
   display: flex;
   flex-wrap: wrap;

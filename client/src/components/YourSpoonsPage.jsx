@@ -184,19 +184,6 @@ const YourSpoonsPage = () => {
                       <div className="spoon-card-content">
                         <p className="spoon-description">{spoon.summary}</p>
                         
-                        <div className="spoon-meta">
-                          <div className="spoon-meta-item">
-                            <Clock size={16} />
-                            <span>{formatDate(spoon.created_at)}</span>
-                          </div>
-                          {spoon.stars && (
-                            <div className="spoon-meta-item">
-                              <Star size={16} />
-                              <span>{spoon.stars} stars</span>
-                            </div>
-                          )}
-                        </div>
-                        
                         <div className="spoon-technologies">
                           {spoon.technologies?.slice(0, 4).map((tech, techIndex) => (
                             <span key={techIndex} className="tech-tag">{tech}</span>
