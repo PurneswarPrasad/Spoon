@@ -13,16 +13,14 @@ import AuthCallback from './components/AuthCallback'
 import { Diamond } from 'lucide-react'
 import { motion } from 'framer-motion'
 import './App.css'
+import { useInsights } from './hooks/useInsights';
 
 // API configuration
 const API_BASE_URL = 'http://localhost:5000'
 
 function AppContent() {
   const { user, login, loading } = useAuth()
-  const [insights, setInsights] = useState(() => {
-    const savedInsights = sessionStorage.getItem('spoon-insights')
-    return savedInsights ? JSON.parse(savedInsights) : null
-  })
+  const { insights, setInsights, clearInsights } = useInsights();
   const [loadingInsights, setLoadingInsights] = useState(false)
   const [error, setError] = useState(null)
 
@@ -135,9 +133,7 @@ function AppContent() {
             </ProtectedRoute>
           } 
         />
-        <Route 
-          path="/insights" 
-          element={
+        <Route path="/insights" element={
             <ProtectedRoute>
               <Header />
               {insights ? (
@@ -147,8 +143,7 @@ function AppContent() {
               )}
               <Footer />
             </ProtectedRoute>
-          } 
-        />
+          } />
         <Route 
           path="*" 
           element={<Navigate to="/" replace />} 
@@ -158,7 +153,7 @@ function AppContent() {
           element={
             <ProtectedRoute>
               <Header />
-              <YourSpoonsPage />
+              <YourSpoonsPage setInsights={setInsights} />
               <Footer />
             </ProtectedRoute>
           } 

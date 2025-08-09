@@ -3,8 +3,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Clock, GitBranch, Star, Trash2, ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useAuth } from '../contexts/AuthContext'
+import DeleteConfirmationModal from './DeleteConfirmationModal'
 
-const YourSpoonsPage = () => {
+const YourSpoonsPage = ({ setInsights }) => {
   const { user } = useAuth()
   const navigate = useNavigate()
   const [spoonHistory, setSpoonHistory] = useState([])
@@ -16,6 +17,11 @@ const YourSpoonsPage = () => {
     itemsPerPage: 5,
     hasNext: false,
     hasPrev: false
+  })
+
+  const [deleteModal, setDeleteModal] = useState({
+    isOpen: false,
+    spoonId: null,
   })
 
   useEffect(() => {
@@ -57,7 +63,17 @@ const YourSpoonsPage = () => {
     loadSpoonHistory(newPage)
   }
 
-  const handleDeleteSpoon = async (spoonId) => {
+  // deletion
+  const handleDeleteClick = (spoonId, spoonName) => {
+    setDeleteModal({
+      isOpen: true,
+      spoonId,
+    });
+  };
+
+  const handleDeleteConfirm = async () => {
+    const { spoonId } = deleteModal;
+    
     try {
       const token = localStorage.getItem('spoon_token')
       const response = await fetch(`http://localhost:5000/api/spoons/history/${spoonId}`, {
@@ -69,17 +85,23 @@ const YourSpoonsPage = () => {
 
       if (response.ok) {
         setSpoonHistory(prev => prev.filter(spoon => spoon.id !== spoonId))
+        // Close modal
+        setDeleteModal({ isOpen: false, spoonId: null})
       }
     } catch (error) {
       console.error('Error deleting spoon:', error)
     }
-  }
+  };
+
+  const handleDeleteCancel = () => {
+    setDeleteModal({ isOpen: false, spoonId: null})
+  };
 
   const handleViewInsights = (spoon) => {
-    // Store insights in session storage and navigate
-    sessionStorage.setItem('spoon-insights', JSON.stringify(spoon.insights))
-    navigate('/insights')
-  }
+    // Store insights in App state via the custom hook
+    setInsights(spoon.insights);
+    navigate('/insights');
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString)
@@ -173,7 +195,7 @@ const YourSpoonsPage = () => {
                             View Insights
                           </button>
                           <button 
-                            onClick={() => handleDeleteSpoon(spoon.id)}
+                            onClick={() => handleDeleteClick(spoon.id, spoon.name || 'this spoon')}
                             className="btn btn-danger btn-sm"
                           >
                             <Trash2 size={14} />
@@ -236,6 +258,11 @@ const YourSpoonsPage = () => {
           </div>
         </div>
       </div>
+      <DeleteConfirmationModal
+        isOpen={deleteModal.isOpen}
+        onClose={handleDeleteCancel}
+        onConfirm={handleDeleteConfirm}
+      />
     </div>
   )
 }
