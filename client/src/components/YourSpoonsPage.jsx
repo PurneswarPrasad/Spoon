@@ -64,7 +64,7 @@ const YourSpoonsPage = ({ setInsights }) => {
   }
 
   // deletion
-  const handleDeleteClick = (spoonId, spoonName) => {
+  const handleDeleteClick = (spoonId) => {
     setDeleteModal({
       isOpen: true,
       spoonId,
@@ -195,7 +195,7 @@ const YourSpoonsPage = ({ setInsights }) => {
                             View Insights
                           </button>
                           <button 
-                            onClick={() => handleDeleteClick(spoon.id, spoon.name || 'this spoon')}
+                            onClick={() => handleDeleteClick(spoon.id)}
                             className="btn btn-danger btn-sm"
                           >
                             <Trash2 size={14} />
