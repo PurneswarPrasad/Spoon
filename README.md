@@ -67,7 +67,7 @@ To run Spoon, you'll need to set up the following environment variables:
 spoon/
 ├── client/              # React Frontend (GitHub input, insights UI)
 ├── server/              # Node.js Backend (API, GitHub cloning, DB, env)
-    ├── spoon.db             # SQLite file (auto-created)
+    ├── spoon.db         # SQLite file (auto-created)
 ├── README.md            # This file!
 ```
 
