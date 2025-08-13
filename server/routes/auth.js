@@ -57,12 +57,9 @@ function generateToken(user) {
 }
 
 // Google OAuth routes
-router.get('/google', (req, res, next) => {
-  console.log('🔐 OAuth route accessed:', req.url);
-  console.log('🔐 Environment:', process.env.NODE_ENV);
-  console.log('🔐 Google Client ID exists:', !!process.env.GOOGLE_CLIENT_ID);
-  passport.authenticate('google', { scope: ['profile', 'email'] })(req, res, next);
-});
+router.get('/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] })
+);
 
 router.get('/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
