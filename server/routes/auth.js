@@ -9,7 +9,9 @@ const router = express.Router();
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:5000/auth/google/callback"
+    callbackURL: process.env.NODE_ENV === 'production' 
+  ? `${process.env.BACKEND_URL}/auth/google/callback`
+  : "http://localhost:5000/auth/google/callback"
   },
   async function(accessToken, refreshToken, profile, cb) {
     try {
@@ -65,7 +67,10 @@ router.get('/google/callback',
     const token = generateToken(req.user);
     
     // Redirect to frontend with token
-    res.redirect(`http://localhost:3000/auth/callback?token=${token}&user=${encodeURIComponent(JSON.stringify(req.user))}`);
+    const frontendUrl = process.env.NODE_ENV === 'production' 
+      ? process.env.FRONTEND_URL 
+      : 'http://localhost:3000';
+    res.redirect(`${frontendUrl}/auth/callback?token=${token}&user=${encodeURIComponent(JSON.stringify(req.user))}`);
   }
 );
 

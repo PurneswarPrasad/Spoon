@@ -15,8 +15,10 @@ import { motion } from 'framer-motion'
 import './App.css'
 import { useInsights } from './hooks/useInsights';
 
+import config from './config'
+
 // API configuration
-const API_BASE_URL = 'http://localhost:5000'
+const API_BASE_URL = config.API_BASE_URL
 
 function AppContent() {
   const { user, login, loading } = useAuth()

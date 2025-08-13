@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
+import config from '../config'
 
 const AuthContext = createContext()
 
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }) => {
       const token = localStorage.getItem('spoon_token')
       if (token) {
         // Verify token with backend
-        const response = await fetch('http://localhost:5000/auth/verify', {
+        const response = await fetch(`${config.API_BASE_URL}/auth/verify`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Backend server for Spoon AI GitHub insights generator",
   "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
@@ -11,6 +15,7 @@
   "dependencies": {
     "@google/genai": "^1.13.0",
     "axios": "^1.5.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",

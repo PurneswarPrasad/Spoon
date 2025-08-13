@@ -4,6 +4,7 @@ import { ArrowLeft, Clock, GitBranch, Star, Trash2, ChevronLeft, ChevronRight } 
 import { motion } from 'framer-motion'
 import { useAuth } from '../contexts/AuthContext'
 import DeleteConfirmationModal from './DeleteConfirmationModal'
+import config from '../config'
 
 const YourSpoonsPage = ({ setInsights }) => {
   const { user } = useAuth()
@@ -31,7 +32,7 @@ const YourSpoonsPage = ({ setInsights }) => {
   const loadSpoonHistory = async (page = 1) => {
     try {
       const token = localStorage.getItem('spoon_token')
-      const response = await fetch(`http://localhost:5000/api/spoons/history?page=${page}&limit=5`, {
+      const response = await fetch(`${config.API_BASE_URL}/api/spoons/history?page=${page}&limit=5`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -76,7 +77,7 @@ const YourSpoonsPage = ({ setInsights }) => {
     
     try {
       const token = localStorage.getItem('spoon_token')
-      const response = await fetch(`http://localhost:5000/api/spoons/history/${spoonId}`, {
+      const response = await fetch(`${config.API_BASE_URL}/api/spoons/history/${spoonId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

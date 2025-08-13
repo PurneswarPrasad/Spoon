@@ -1,11 +1,12 @@
 import React from 'react'
 import { Diamond } from 'lucide-react'
 import { motion } from 'framer-motion'
+import config from '../config'
 
 const LoginPage = () => {
   const handleGoogleLogin = () => {
     // Redirect to backend OAuth endpoint
-    window.location.href = 'http://localhost:5000/auth/google'
+    window.location.href = `${config.API_BASE_URL}/auth/google`
   }
 
   return (
