@@ -37,7 +37,6 @@ app.use(passport.session());
 const insightsRouter = require('./routes/insights');
 const authRouter = require('./routes/auth');
 const spoonsRouter = require('./routes/spoons');
-const databaseService = require('./services/databaseService');
 
 // Routes
 app.use('/api/insights', insightsRouter);
@@ -46,17 +45,10 @@ app.use('/api/spoons', spoonsRouter);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-  console.log('🏥 Health check requested');
-  console.log('🏥 Environment:', process.env.NODE_ENV);
-  console.log('🏥 Port:', process.env.PORT);
-  console.log('🏥 Database connected:', !!databaseService);
-  
   res.json({ 
     status: 'OK', 
     message: 'Spoon Server is running',
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development',
-    port: process.env.PORT || 5000
+    timestamp: new Date().toISOString()
   });
 });
 

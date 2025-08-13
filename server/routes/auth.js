@@ -57,32 +57,9 @@ function generateToken(user) {
 }
 
 // Google OAuth routes
-router.get('/google', (req, res, next) => {
-  console.log('🔐 OAuth route accessed:', req.url);
-  console.log('🔐 Environment:', process.env.NODE_ENV);
-  console.log('🔐 Google Client ID exists:', !!process.env.GOOGLE_CLIENT_ID);
-  console.log('🔐 Google Client Secret exists:', !!process.env.GOOGLE_CLIENT_SECRET);
-  console.log('🔐 BACKEND_URL:', process.env.BACKEND_URL);
-  console.log('🔐 FRONTEND_URL:', process.env.FRONTEND_URL);
-  console.log('🔐 CORS_ORIGIN:', process.env.CORS_ORIGIN);
-  console.log('🔐 JWT_SECRET exists:', !!process.env.JWT_SECRET);
-  console.log('🔐 SESSION_SECRET exists:', !!process.env.SESSION_SECRET);
-  
-  // Check if all required environment variables are set
-  const requiredVars = ['GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET', 'JWT_SECRET', 'SESSION_SECRET'];
-  const missingVars = requiredVars.filter(varName => !process.env[varName]);
-  
-  if (missingVars.length > 0) {
-    console.error('❌ Missing environment variables:', missingVars);
-    return res.status(500).json({ 
-      error: 'Server configuration error',
-      missing: missingVars 
-    });
-  }
-  
-  console.log('✅ All required environment variables are set');
-  passport.authenticate('google', { scope: ['profile', 'email'] })(req, res, next);
-});
+router.get('/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] })
+);
 
 router.get('/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
